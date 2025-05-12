@@ -1,17 +1,63 @@
 ---
 import "@styles/global.css";
+
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+import mobileImage from "@images/image-product-mobile.jpg";
+import desktopImage from "@images/image-product-desktop.jpg";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/src/icons/favicon-32x32.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>Frontend Mentor | Product preview card component</title>
   </head>
-  <body class="font-montserrat text-sm">
-    <h1 class="font-fraunces text-5xl text-green-300">Astro</h1>
-    <p>Consectetur aliqua sint enim ut sit fugiat irure et ut.</p>
+  <body class="font-montserrat bg-fm-cream text-fm-grey mt-6 text-sm">
+    <main class="outer-layout @container mx-auto">
+      <article class="bg-fm-white inner-layout overflow-hidden rounded-2xl">
+        <Image
+          src={mobileImage}
+          alt={"product image"}
+          class:list={"full-width @desktop:hidden"}
+        />
+        <Image
+          src={desktopImage}
+          alt={"product image"}
+          class:list={"desktop-img @desktop:block @desktop:col-span-1 hidden"}
+        />
+        <section class="@desktop:col-span-1 p-6">
+          <h1 class="pb-4 tracking-[3px] uppercase">Perfume</h1>
+          <h2 class="font-fraunces text-fm-black pb-5 text-4xl">
+            Gabrielle Essence Eau De Parfum
+          </h2>
+          <p class="pb-6">
+            A floral, solar and voluptuous interpretation composed by Olivier
+            Polge, Perfumer-Creator for the House of CHANEL.
+          </p>
+          <p class="font-fraunces flex items-center gap-6 pb-5">
+            <span class="text-fm-green-500 text-4xl">$149.99</span>
+            <span class="line-through">$169.99</span>
+          </p>
+          <button
+            class="hover:bg-fm-green-700 bg-fm-green-500 text-fm-white flex w-full items-center justify-center rounded-xl py-4"
+          >
+            <Icon name="icon-cart" class="mr-2" />
+            Add to Cart</button
+          >
+        </section>
+      </article>
+      <footer class="mt-10 flex justify-center">
+        <div class="attribution">
+          Challenge by
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+            >Frontend Mentor</a
+          >. Coded by <a href="https://github.com/tmykkanen">Tyler Mykkanen</a>.
+        </div>
+      </footer>
+    </main>
   </body>
 </html>

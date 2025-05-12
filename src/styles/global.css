@@ -20,4 +20,46 @@
   --color-fm-grey: hsl(228, 12%, 48%);
   --color-fm-cream: hsl(30, 38%, 92%);
   --color-fm-white: hsl(0, 0%, 100%);
+
+  /* 600px + 16px padding on each side */
+  --container-desktop: 632px;
+}
+
+@layer components {
+  .outer-layout {
+    --max-width: 600px;
+    --padding: 16px;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(var(--padding), 1fr)
+      min(var(--max-width), 100% - var(--padding) * 2)
+      minmax(var(--padding), 1fr);
+
+    & > * {
+      grid-column: 2 / 3;
+    }
+
+    & > .full-width {
+      grid-column: 1 /-1;
+    }
+  }
+
+  .inner-layout {
+    --max-width: 600px;
+    --padding: 16px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    & > * {
+      grid-column: 1 / -1;
+    }
+
+    & > .full-width {
+      grid-column: 1 /-1;
+    }
+  }
 }
